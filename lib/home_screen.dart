@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+int i = 0;
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -39,37 +42,51 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(children: <Widget>[
-          SizedBox(
-            width: 10.0,
-          ),
-          Container(
-            padding: padding,
-            child: SvgPicture.asset(
-              'logo--light.svg',
-            ),
-          ),
-        ]),
-      ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            Row(children: <Widget>[
+              SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                height: 30,
+                margin: EdgeInsets.all(20),
+                child: SvgPicture.asset(
+                  'logo--light.svg',
+                ),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text('FAQ'),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text('Contacts'),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    FlatButton(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        color: Colors.blueAccent,
+                        onPressed: () {
+                          i++;
+                        },
+                        child: Text('Login with Robot Vally')),
+                    SizedBox(
+                      width: 30.0,
+                    ),
+                  ],
+                ),
+              )
+            ]),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
